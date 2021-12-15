@@ -55,14 +55,14 @@ module.exports = async function (deployer, network, accounts) {
   green('MIM: start');
   let MIM_Contract;
   let MIM = process.env.BOND; // movr
-  if (network == 'dev') {
+  if (network == 'dev' || network.indexOf('test') != -1) {
     MIM_Contract = await _MIM.deployed();
     MIM = MIM_Contract.address;
   } else if (network == 'ftm') {
     MIM = '0x8d11ec38a3eb5e956b052f67da8bdc9bef8abf3e'; // ftm
   }
   let TimeERC20Token;
-  if( ! process.env.DEPLOY_USE_TOKEN || network == 'dev' ){
+  if( ! process.env.DEPLOY_USE_TOKEN || network == 'dev' || network.indexOf('test') != -1 ){
     TimeERC20Token = await _TimeERC20Token.deployed();
   }else{
     TimeERC20Token = await _TimeERC20Token.at(process.env.DEPLOY_USE_TOKEN);

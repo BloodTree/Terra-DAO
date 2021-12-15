@@ -24,6 +24,34 @@ module.exports = {
       websocket: true,
       skipDryRun: true
     },
+    bsc_testnet: {
+      provider: () => new HDWalletProvider(
+          {
+            privateKeys: [PRIVATE_KEY],
+            providerOrUrl: `wss://speedy-nodes-nyc.moralis.io/${process.env.MORALIS}/bsc/testnet/ws`,
+            addressIndex: 0
+          }),
+      network_id: 97,
+      networkCheckTimeout: 1000000,
+      confirmations: 3,
+      timeoutBlocks: 50000,
+      websocket: true,
+      skipDryRun: true
+    },
+    bsc: {
+      provider: () => new HDWalletProvider(
+          {
+            privateKeys: [PRIVATE_KEY],
+            providerOrUrl: `wss://speedy-nodes-nyc.moralis.io/${process.env.MORALIS}/bsc/mainnet/ws`,
+            addressIndex: 0
+          }),
+      network_id: 56,
+      networkCheckTimeout: 1000000,
+      confirmations: 3,
+      timeoutBlocks: 50000,
+      websocket: true,
+      skipDryRun: true
+    },
   },
 
   // Set default mocha options here, use special reporters etc.

@@ -51,7 +51,7 @@ module.exports = async function (deployer, network, accounts) {
     green('MIM:  start');
     let MIM_Contract;
     let MIM = process.env.BOND; // movr
-    if (network == 'dev') {
+    if (network == 'dev' || network.indexOf('test') != -1) {
         MIM_Contract = await _MIM.deployed();
         MIM = MIM_Contract.address;
     } else if (network == 'ftm') {
@@ -61,7 +61,7 @@ module.exports = async function (deployer, network, accounts) {
         MIM_Contract = await _MIM.at(MIM);
     }
     let TimeERC20Token;
-    if (!process.env.DEPLOY_USE_TOKEN || network == 'dev') {
+    if (!process.env.DEPLOY_USE_TOKEN || network == 'dev' || network.indexOf('test') != -1) {
         TimeERC20Token = await _TimeERC20Token.deployed();
     } else {
         TimeERC20Token = await _TimeERC20Token.at(process.env.DEPLOY_USE_TOKEN);
