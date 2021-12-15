@@ -1,0 +1,19 @@
+{
+  "name": "wonderland",
+  "version": "1.0.0",
+  "description": "wonderland solidity contracts",
+  "repository": "github:wonderland/wonderland-contracts",
+  "author": "James",
+  "license": "MIT",
+  "devDependencies": {
+    "chalk": "^4.1.0",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "@truffle/hdwallet-provider": "^1.6.0",
+    "truffle-plugin-verify": "^0.5.18"
+  },
+  "scripts": {
+    "dev": "truffle migrate --f 1 --to 7 --network dev",
+    "avax": "truffle migrate --f 1 --to 7 --network avax"
+  }
+}
